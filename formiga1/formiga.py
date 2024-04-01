@@ -1,6 +1,5 @@
 import random
 import numpy as np
-
 import matplotlib.pyplot as plt
 # parametros
 linha = 20
