@@ -10,8 +10,8 @@ linha = 20
 coluna = 20
 raio_visao = 1
 pop_formiga = 15
-linha = 20
-coluna = 20
+linha = 50
+coluna = 50
 
 
 matriz = np.zeros((linha, coluna), dtype=int)
