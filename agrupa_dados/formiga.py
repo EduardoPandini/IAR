@@ -1,4 +1,5 @@
 import random
+from dado import *
 class Formiga:
     formigas = []
     def __init__(self, id, coordenadaX, coordenadaY, temitem, valor_cel, valor_formiga, raio_visao):
@@ -40,37 +41,50 @@ class Formiga:
                             cheias += 1
                 #função pa largar
 
-    def move(self, matriz, linha, coluna):
-        while True:
-            movimento_horizontal = random.randint(-1, 1)
-            movimento_vertical = random.randint(-1, 1)
-            if ((0 <= self.coordenadaX+movimento_horizontal < linha) and (0 <= self.coordenadaY+movimento_vertical < coluna)) and (movimento_vertical != 0 or movimento_horizontal != 0) and matriz[movimento_horizontal + self.coordenadaX][movimento_vertical+self.coordenadaY] < 5:                        
-                # movendo do vazio pra vazio
-                if matriz[self.coordenadaX][self.coordenadaY] == self.valor_formiga:
-                    if matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] == 0:
-                        matriz[self.coordenadaX][self.coordenadaY] = 0
-                        matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga
-                        self.coordenadaX += movimento_horizontal
-                        self.coordenadaY += movimento_vertical
-                        #do vazio pra item
-                    else:
-                        matriz[self.coordenadaX][self.coordenadaY] = 0
-                        matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga + matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical]
-                        self.coordenadaX += movimento_horizontal
-                        self.coordenadaY += movimento_vertical
+
+def calcula_pega(self, dado):
+    fi = 1/8
+
+def somaVizinhos(self, matriz, linha, coluna):
+    soma = 0
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if 0 <= self.coordenadaX + i  < linha and 0 <= self.coordenadaY + j < coluna and 0 < matriz[self.coordenadaX+i][self.coordenadaY+j] != self.valor_formiga:
+                soma+=1
+    return soma
+
+
+def move(self, matriz, linha, coluna):
+    while True:
+        movimento_horizontal = random.randint(-1, 1)
+        movimento_vertical = random.randint(-1, 1)
+        if ((0 <= self.coordenadaX+movimento_horizontal < linha) and (0 <= self.coordenadaY+movimento_vertical < coluna)) and (movimento_vertical != 0 or movimento_horizontal != 0) and matriz[movimento_horizontal + self.coordenadaX][movimento_vertical+self.coordenadaY] < 5:                        
+            # movendo do vazio pra vazio
+            if matriz[self.coordenadaX][self.coordenadaY] == self.valor_formiga:
+                if matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] == 0:
+                    matriz[self.coordenadaX][self.coordenadaY] = 0
+                    matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga
+                    self.coordenadaX += movimento_horizontal
+                    self.coordenadaY += movimento_vertical
+                    #do vazio pra item
                 else:
-                    #do item pro vazio
-                    if matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] == 0:
-                        matriz[self.coordenadaX][self.coordenadaY] -= self.valor_formiga
-                        matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga
-                        self.coordenadaX += movimento_horizontal
-                        self.coordenadaY += movimento_vertical
-                    else: #item pra item
-                        matriz[self.coordenadaX][self.coordenadaY] -= self.valor_formiga
-                        matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] += self.valor_formiga
-                        self.coordenadaX += movimento_horizontal
-                        self.coordenadaY += movimento_vertical         
-            break
+                    matriz[self.coordenadaX][self.coordenadaY] = 0
+                    matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga + matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical]
+                    self.coordenadaX += movimento_horizontal
+                    self.coordenadaY += movimento_vertical
+            else:
+                #do item pro vazio
+                if matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] == 0:
+                    matriz[self.coordenadaX][self.coordenadaY] -= self.valor_formiga
+                    matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] = self.valor_formiga
+                    self.coordenadaX += movimento_horizontal
+                    self.coordenadaY += movimento_vertical
+                else: #item pra item
+                    matriz[self.coordenadaX][self.coordenadaY] -= self.valor_formiga
+                    matriz[self.coordenadaX+movimento_horizontal][self.coordenadaY+movimento_vertical] += self.valor_formiga
+                    self.coordenadaX += movimento_horizontal
+                    self.coordenadaY += movimento_vertical         
+        break
 
                     
 

@@ -21,16 +21,18 @@ with open('Square1-DataSet-400itens.txt', 'r') as file:
     linhas = file.readlines()[4:]  # Ignorando as primeiras 4 linhas
 #  def __init__(self, id, coordenadaX, coordenadaY, valor1, valor2, tipo):
 # Processamento dos dados
+meozovo = 1
 for entrada in linhas:
 #     # Verificar se a linha não está vazia e não começa com '#'
     if entrada.strip() and not entrada.startswith("#"):
         valores = entrada.split('\t')
 
         posicao = random.choice(posicoes_possiveis)
-        matriz[posicao[0]][posicao[1]] = int(valores[2])
-        novo_dado = Dado(posicao[0], posicao[1], valores[0], valores[1], int(valores[2]))
+        matriz[posicao[0]][posicao[1]] = (int(valores[2]), meozovo)
+        novo_dado = Dado(posicao[0], posicao[1], valores[0], valores[1], int(valores[2]), meozovo+pop_formiga)
         print(novo_dado)
-        
+        meozovo +=1
+ 
 
 
 for i in range(pop_formiga):
