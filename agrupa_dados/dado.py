@@ -32,17 +32,22 @@ class Dado:
 
         return distancia
     
-    def semelhanca(x, y, dado, matriz_dado, raio_visao, linha, coluna, alfa):
+    def semelhanca(x, y, dado, matriz_dado, raio_visao, linha, coluna, alfa, quem):
         similaridade = 0
         vizinhos = 0
         for i in range(-raio_visao, raio_visao+1):
                     for j in range(-raio_visao, raio_visao+1):
                         if 0 <= x + i  < linha and 0 <= y + j < coluna:
-                             if matriz_dado[x+i][y+j] is not None:
+                            if matriz_dado[x+i][y+j] is not None:
                                 vizinhos += 1
-                                subtrai = Dado.distancia_euclidiana(dado, matriz_dado[x+i][y+j])/alfa
+                                subtrai = Dado.distancia_euclidiana(dado, matriz_dado[x+i][y+j])/5
                                 similaridade += 1.0 - subtrai
                                 # print(similaridade)
+                            else: 
+                                if quem == 1:
+                                    pass
+                                     
+                             
         if vizinhos != 0:
             fx = similaridade/vizinhos**2
             if fx < 0.0: fx = 0.0

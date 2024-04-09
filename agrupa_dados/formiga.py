@@ -18,26 +18,26 @@ class Formiga:
         return f"ID: {self.id}, {self.coordenadaX}, {self.coordenadaY}, {self.temitem}"
 
     def pega_larga(self, matriz, linha, coluna, matriz_dado, raio_visao):
-        k1 = 0.4
-        k2 = 0.8
+        k1 = 0.7
+        k2 = 0.01
         alfa = 28
         #eh o pega
         if self.temitem == 0:
             if matriz_dado[self.coordenadaX][self.coordenadaY] is None: #vazio passa
                 return 0
             else: #analizar se pega
-                semelhanca = Dado.semelhanca(self.coordenadaX, self.coordenadaY, matriz_dado[self.coordenadaX][self.coordenadaY],  matriz_dado, raio_visao, linha, coluna, alfa)
+                semelhanca = Dado.semelhanca(self.coordenadaX, self.coordenadaY, matriz_dado[self.coordenadaX][self.coordenadaY],  matriz_dado, raio_visao, linha, coluna, alfa,1)
                 pegar = (k1 /( k1 + semelhanca)) ** 2
-                if pegar >= random.random() and pegar > 0.05:
+                if pegar >= random.random():
                     self.dado = matriz_dado[self.coordenadaX][self.coordenadaY]
                     matriz_dado[self.coordenadaX][self.coordenadaY] = None
                     self.temitem = 1
                     # print("peguei", pegar)
         else:
             if matriz_dado[self.coordenadaX][self.coordenadaY] is None:
-                semelhanca = Dado.semelhanca(self.coordenadaX, self.coordenadaY, self.dado, matriz_dado, raio_visao, linha, coluna, 28)
+                semelhanca = Dado.semelhanca(self.coordenadaX, self.coordenadaY, self.dado, matriz_dado, raio_visao, linha, coluna, alfa, 2)
                 largar = (semelhanca/(k2+semelhanca)) ** 2
-                if largar >= random.random() and largar > 0.05:
+                if largar >= random.random():
                     matriz_dado[self.coordenadaX][self.coordenadaY] = self.dado
                     self.dado = None
                     self.temitem = 0

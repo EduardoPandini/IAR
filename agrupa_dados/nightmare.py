@@ -1,16 +1,10 @@
 import math
-
-x1, y1 = -19.2730055, -18.23689836
-x2, y2 =  -20.10683994,	-20.7140554
-
-# Calcular as diferenças entre os pares de números
-diff_x = x2 - x1
-diff_y = y2 - y1
-
-# Calcular a soma das diferenças ao quadrado
-soma_quadrados = diff_x**2 + diff_y**2
-
-# Tirar a raiz quadrada da soma das diferenças ao quadrado
-distancia = math.sqrt(soma_quadrados)
-# print(distancia)
-print(distancia)
+semelhanca = 1
+k1 = 0.5
+k2 = 0.18
+# similaridade = 8
+# vizinhos = 8
+# print(similaridade/vizinhos**2)
+# print((semelhanca/(k2+semelhanca)) ** 2)
+# print((k1 /( k1 + semelhanca)) ** 2)
+print((semelhanca/(k2+semelhanca)) ** 2)

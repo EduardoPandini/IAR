@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 
 # parametros
 raio_visao = 1
-pop_formiga = 50
-linha = 50
-coluna = 50
+pop_formiga = 100
+linha = 60
+coluna = 60
 valor_formiga = 5
 iteracao = 2000000
 
@@ -50,7 +50,7 @@ def update_plot(matriz, i):
     plt.imshow(matriz, cmap='gist_ncar', interpolation='nearest')
     plt.colorbar()  # Adiciona uma barra de cores para referência
     plt.title("iteração num %i" % i)
-    plt.pause(0.001)  # Pausa por um curto período para atualizar o gráfico
+    # plt.pause(0.001)  # Pausa por um curto período para atualizar o gráfico
 
 def somarMatrizesFim(matriz1, matriz2):
     result = []
@@ -84,6 +84,9 @@ for i in range(iteracao):
         
     if i % 10000 == 0:
         print(i, "still alive")
+        # matriz_aux = somarMatrizesFim(matriz, matriz_dado)
+        # update_plot(matriz_aux, iteracao)
+        # plt.show()
 matriz_aux = somarMatrizesFim(matriz, matriz_dado)
 update_plot(matriz_aux, iteracao)
 plt.show()
